@@ -7,8 +7,6 @@ window.addEventListener('load', ()=>{
     let temperatureSection = document.querySelector('.temp');
     const temperatureSpan = document.querySelector('.temp span');
 
-
-
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position =>{
             console.log(position);
@@ -45,9 +43,13 @@ window.addEventListener('load', ()=>{
                 }
             });
 
+        })
+        .catch(error => {
+            console.log("Error fetching weather data", error);
+            const errorMsg = "Failed to fetch weather data. Please try again later.";
+            tempDesc.textContent = errorMsg;
         });
         });
-
 
     }else{
         h1.textContent = "enable the location service bruh I'm not the fortune teller"
